@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-dp
+  labels:
+    app: employees
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: employees
+  template:
+    metadata:
+      labels:
+        app: employees
+    spec:
+      containers:
+      - name: app-pod
+        image: 134986800938.dkr.ecr.us-east-1.amazonaws.com/project-ecr:app
+        ports:
+        - containerPort: 8080
+        env:
+          - name: DBUSER
+            value: "root"
+          - name: DATABASE
+            value: "employees"
+          - name: DBPWD
+            value: "wordpass"
+          - name: APP_COLOR
+            value: "blue"
+          - name: DBHOST
+            value: "10.244.0.5"     # To check and change
+          - name: DBPORT
+            value: "3306"
+
+#   imagePullSecrets:
+#     - name: ecr-registry-key

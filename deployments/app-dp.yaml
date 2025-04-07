@@ -18,7 +18,7 @@ spec:
       - name: app-pod
         image: 134986800938.dkr.ecr.us-east-1.amazonaws.com/project-ecr:app
         ports:
-        - containerPort: 8080
+        - containerPort: 81 #8080
         env:
           - name: DBUSER
             value: "root"

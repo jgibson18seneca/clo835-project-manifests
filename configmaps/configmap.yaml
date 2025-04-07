@@ -7,7 +7,7 @@ metadata:
     app: my-flask-app
 data:
   PORT: "81"
-  S3_BUCKET_URL: "https://project-s3.s3.amazonaws.com/JGibson.jpg"
+  S3_BUCKET_URL: "https://clo835-project-s3.s3.amazonaws.com/JGibson.jpg"
   DATABASE: "employees"
   DBPWD: "wordpass"
   ME: "Joseph"

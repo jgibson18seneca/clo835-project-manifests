@@ -17,17 +17,20 @@ spec:
       containers:
       - name: app-pod
         image: 134986800938.dkr.ecr.us-east-1.amazonaws.com/project-ecr:app
+        envFrom:
+        - configMapRef:
+            name: proj-configmap
         ports:
         - containerPort: 81 #8080
         env:
           - name: DBUSER
             value: "root"
-          - name: DATABASE
-            value: "employees"
-          - name: DBPWD
-            value: "wordpass"
-          - name: APP_COLOR
-            value: "blue"
+          # - name: DATABASE
+          #   value: "employees"
+          # - name: DBPWD
+          #   value: "wordpass"
+          # - name: APP_COLOR
+          #   value: "blue"
           - name: DBHOST
             value: "10.244.0.5"     # To check and change
           - name: DBPORT

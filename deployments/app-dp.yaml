@@ -22,19 +22,21 @@ spec:
             name: proj-configmap
         ports:
         - containerPort: 81 #8080
-        env:
-          - name: DBUSER
-            value: "root"
+        envFrom:
+        - secretRef:
+          name: app-secret
+          #- name: DBUSER
+          #  value: "root"
           # - name: DATABASE
           #   value: "employees"
           # - name: DBPWD
           #   value: "wordpass"
           # - name: APP_COLOR
           #   value: "blue"
-          - name: DBHOST
-            value: "10.244.0.5"     # To check and change
-          - name: DBPORT
-            value: "3306"
+          #- name: DBHOST
+          #  value: "10.244.0.5"     # To check and change
+          #- name: DBPORT
+          #  value: "3306"
 
 #   imagePullSecrets:
 #     - name: ecr-registry-key

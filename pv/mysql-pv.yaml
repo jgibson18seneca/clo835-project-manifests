@@ -9,5 +9,7 @@ spec:
     - ReadWriteOnce
     - ReadOnlyMany
   persistentVolumeReclaimPolicy: Retain
-  hostPath:
-    path: /tmp/mysql
+  storageClassName: gp2
+  awsElasticBlockStore:
+    volumeID: vol-0202fe1b222406216  # Replace with your actual EBS volume ID
+    fsType: ext4

@@ -16,12 +16,11 @@ spec:
     spec:
       containers:
       - name: db-pod
-        image: 134986800938.dkr.ecr.us-east-1.amazonaws.com/project-ecr:db
+        image: 134986800938.dkr.ecr.us-east-1.amazonaws.com/project-ecr:db-v1
         ports:
         - containerPort: 3306
         env:
           - name: MYSQL_ROOT_PASSWORD
             value: "wordpass"
-          
-#   imagePullSecrets:
-#   - name: ecr-registry-key
+      imagePullSecrets:
+      - name: regcred

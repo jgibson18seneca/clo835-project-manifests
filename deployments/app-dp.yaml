@@ -5,7 +5,7 @@ metadata:
   labels:
     app: employees
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: employees
@@ -16,27 +16,30 @@ spec:
     spec:
       containers:
       - name: app-pod
-        image: 134986800938.dkr.ecr.us-east-1.amazonaws.com/project-ecr:app
-        envFrom:
-        - configMapRef:
-            name: proj-configmap
+        image: 134986800938.dkr.ecr.us-east-1.amazonaws.com/project-ecr:app-v1
         ports:
-        - containerPort: 81 #8080
-        envFrom:
-        - secretRef:
-          name: app-secret
-          #- name: DBUSER
-          #  value: "root"
-          # - name: DATABASE
-          #   value: "employees"
-          # - name: DBPWD
-          #   value: "wordpass"
-          # - name: APP_COLOR
-          #   value: "blue"
-          #- name: DBHOST
-          #  value: "10.244.0.5"     # To check and change
-          #- name: DBPORT
-          #  value: "3306"
+        - containerPort: 81
+        env:
+          - name: DBPORT
+            value: "3306"
+          - name: DBUSER
+            value: "root"
+          - name: DATABASE
+            value: "employees"
+          - name: DBPWD
+            value: "wordpass"
+          - name: APP_COLOR
+            value: "blue"
+          - name: DBHOST
+            value: "db-service"
+          - name: BACKGROUND_IMAGE_URL
+            valueFrom:
+              configMapKeyRef:
+                name: proj-configmap
+                key: BACKGROUND_IMAGE_URL
+        # envFrom:
+        # - secretRef:
+        #   name: app-secret
 
-#   imagePullSecrets:
-#     - name: ecr-registry-key
+      imagePullSecrets:
+      - name: regcred

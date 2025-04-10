@@ -3,11 +3,11 @@ kind: ConfigMap
 metadata:
   name: proj-configmap
   namespace: final
-  labels:
-    app: my-flask-app
+  # labels:
+  #   app: app
 data:
   PORT: "81"
-  S3_BUCKET_URL: "https://clo835-project-s3.s3.us-east-1.amazonaws.com/JGibson.jpg"
+  BACKGROUND_IMAGE_URL: "https://clo835-project-s3.s3.us-east-1.amazonaws.com/JGibson.jpg"
   DATABASE: "employees"
   DBPWD: "wordpass"
   ME: "Joseph"

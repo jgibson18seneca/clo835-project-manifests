@@ -20,11 +20,11 @@ spec:
         envFrom:
         - configMapRef:
             name: proj-configmap
-        ports:
-        - containerPort: 81 #8080
-        envFrom:
         - secretRef:
           name: app-secret
+        ports:
+        - containerPort: 81 #8080
+        
           #- name: DBUSER
           #  value: "root"
           # - name: DATABASE

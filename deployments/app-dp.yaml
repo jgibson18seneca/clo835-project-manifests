@@ -20,26 +20,35 @@ spec:
         ports:
         - containerPort: 81
         env:
-          - name: DBPORT
-            value: "3306"
-          - name: DBUSER
-            value: "root"
-          - name: DATABASE
-            value: "employees"
-          - name: DBPWD
-            value: "wordpass"
-          - name: APP_COLOR
-            value: "blue"
-          - name: DBHOST
-            value: "db-service"
           - name: BACKGROUND_IMAGE_URL
             valueFrom:
               configMapKeyRef:
                 name: proj-configmap
                 key: BACKGROUND_IMAGE_URL
-        # envFrom:
-        # - secretRef:
-        #   name: app-secret
-
+          - name: DBPORT
+            valueFrom:
+              configMapKeyRef:
+                name: proj-configmap
+                key: DBPORT
+          - name: DBHOST
+            valueFrom:
+              configMapKeyRef:
+                name: proj-configmap
+                key: DBHOST
+          - name: DATABASE
+            valueFrom:
+              configMapKeyRef:
+                name: proj-configmap
+                key: DATABASE
+          - name: DBUSER
+            valueFrom:
+              secretKeyRef:
+                name: app-secret
+                key: DBUSER
+          - name: DBPWD
+            valueFrom:
+              secretKeyRef:
+                name: app-secret
+                key: DBPWD
       imagePullSecrets:
       - name: regcred

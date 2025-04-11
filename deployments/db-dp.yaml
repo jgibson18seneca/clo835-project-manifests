@@ -21,6 +21,9 @@ spec:
       containers:
       - name: db-pod
         image: 134986800938.dkr.ecr.us-east-1.amazonaws.com/project-ecr:db-v1
+        volumeMounts:
+        - name: db-data
+          mountPath: /app/data
         ports:
         - containerPort: 3306
         env:

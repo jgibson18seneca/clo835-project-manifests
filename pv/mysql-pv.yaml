@@ -7,9 +7,8 @@ spec:
     storage: 10Gi
   accessModes:
     - ReadWriteOnce
-    - ReadOnlyMany
   persistentVolumeReclaimPolicy: Retain
   storageClassName: gp2
   awsElasticBlockStore:
-    volumeID: vol-0202fe1b222406216  # Replace with your actual EBS volume ID
+    volumeID: vol-0202fe1b222406216
     fsType: ext4

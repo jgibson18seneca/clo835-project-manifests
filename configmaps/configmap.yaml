@@ -3,11 +3,10 @@ kind: ConfigMap
 metadata:
   name: proj-configmap
   namespace: final
-  # labels:
-  #   app: app
 data:
   PORT: "81"
   BACKGROUND_IMAGE_URL: "https://clo835-project-s3.s3.us-east-1.amazonaws.com/JGibson.jpg"
   DATABASE: "employees"
-  DBPWD: "wordpass"
+  DBPORT: "3306"
+  DBHOST: "db-service"
   ME: "Joseph"

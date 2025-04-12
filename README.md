@@ -30,7 +30,7 @@ export DBPORT=3306 && export DBHOST=172.17.0.2 && export DBUSER=root && export D
 ```
 ### Run Containers
 ```
-docker run -d --name db -e MYSQL_ROOT_PASSWORD=wordpass $ECR:db-v1
+docker run -d --name db -e MYSQL_ROOT_PASSWORD=something $ECR:db-v1
 ```
 ```
 docker run -d --name app -p 81:81 -e DBHOST=$DBHOST -e DBPORT=$DBPORT -e DBUSER=$DBUSER -e DBPWD=$DBPWD $ECR:app-v1
@@ -63,7 +63,7 @@ Username and Password (GitHub token) may be needed for first time clone
 
 ### Copy manifests to specific folder
 ```
-cp configmaps/* deployments/* eks/* pv/* pvc/* secrets/* services/* ../tests/manifests
+cp configmaps/* deployments/* eks/* pv/* pvc/* secrets/* services/* ../manifests
 ```
 ### Use credentials from AWS Academy AWS Details and copy them into ~/.aws/credentials file
 ```
@@ -169,7 +169,7 @@ k rollout restart deployment app-dp -n final
 ```
 k port-forward svc/app-service 8080:8080 -n final 
 ```
-### Restart App Deployment
+### Restart DB Deployment
 ```
 k rollout restart deployment db-dp -n final
 ```
@@ -183,7 +183,7 @@ k cluster-info --context kind-kind
 ```
 ### Remove all resources
 ```
-k delete deployments, services --all -n final
+k delete deployments --all -n final
 ```
 ```
 k delete services --all -n final
